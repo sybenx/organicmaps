@@ -174,7 +174,33 @@ MetaConfig MapFilesDownloader::LoadMetaConfig()
     request.RunHttpRequest(httpResult);
   }
 
-  std::optional<MetaConfig> metaConfig = downloader::ParseMetaConfig(httpResult);
+  std::string newFormatJson = R"({
+    "servers": ["https://cdn-fi1.organicmaps.app/", "https://cdn-eu2.organicmaps.app/", "https://cdn-de2.organicmaps.app", "https://cdn-de3.organicmaps.app" ],
+    "settings": {
+      "DonateUrl": "https://organicmaps.app/donate/",
+      "NY": "false"
+    },
+    "productsConfig": {
+      "placePagePrompt": "Please donate to support developers of this community-developed app, every dollar counts.",
+      "aboutScreenPrompt": "Please donate to support developers of this community-developed app, every dollar counts.",
+      "products": [
+        {
+          "title": "$3",
+          "link": "http://product1"
+        },
+        {
+          "title": "$10",
+          "link": "http://product2"
+        },
+        {
+          "title": "Other",
+          "link": "http://product2"
+        }
+      ]
+    }
+  })";
+
+  std::optional<MetaConfig> metaConfig = downloader::ParseMetaConfig(newFormatJson);
   if (!metaConfig)
   {
     metaConfig = downloader::ParseMetaConfig(pl.DefaultUrlsJSON());
