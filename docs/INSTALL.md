@@ -88,7 +88,7 @@ You need a Linux or a MacOS machine to build a desktop version of Organic Maps. 
 
 Ensure that you have at least 20GB of free space.
 
-Install Cmake (**3.22.1** minimum), Boost, Qt 6 and other dependencies.
+Install Cmake (**3.30.3** minimum), Boost, Qt 6 and other dependencies.
 
 Installing *ccache* can speed up active development.
 
@@ -124,7 +124,7 @@ sudo apt update && sudo apt install -y \
 
 | Software  | Minimum version | Impacted Ubuntu release | Workaround                                                  |
 | --------- | --------------- | ----------------------- | ----------------------------------------------------------- |
-| CMake     | `3.22.1`        | `20.04` and older       | Install newer `cmake` from [PPA](https://apt.kitware.com/) or from `snap`<br> with `sudo snap install --classic cmake` |
+| CMake     | `3.30.3`        | `20.04` and older       | Install newer `cmake` from [PPA](https://apt.kitware.com/) or from `snap`<br> with `sudo snap install --classic cmake` |
 | FreeType  | `2.13.1`        | `22.04` and older       | Install newer `libfreetype6` and `libfreetype-dev` from [PPA](https://launchpad.net/~reviczky/+archive/ubuntu/freetype) |
 | GeoClue   | `2.5.7`         | `20.04` and older       | Install newer `geoclue-2.0` from [PPA](https://launchpad.net/~savoury1/+archive/ubuntu/backports) |
 | Qt 6      | `6.4.0`         | `22.04` and older       | Build and install Qt 6.4 manually |
@@ -400,7 +400,7 @@ Install Android SDK and NDK:
 - Switch to "SDK Tools" tab.
 - Check "Show Package Details" checkbox.
 - Select "NDK (Side by side)" version **27.1.12297006**.
-- Select "CMake" version **3.22.1**.
+- Select "CMake" version **3.30.3**.
 - Click "Apply" and wait for downloads and installation to finish.
 - In the left pane menu select "Appearance & Behavior > System Settings > Memory Settings".
 - Set "IDE max heap size" to 2048MB or more (otherwise the Studio might get stuck on "Updating indexes" when opening the project).
@@ -430,7 +430,7 @@ _Windows 10:_ no action needed, should work out of the box.
 ### Create a device
 
 Setup a virtual device to use [emulator](https://developer.android.com/studio/run/emulator) ("Tools > Device Manager") or [use a hardware device for debugging](https://developer.android.com/studio/run/device).
-If using an emulator, make sure to choose a system image with API Level 34. Use ABI _x86_64_ for Intel-based processors and _arm64-v8a_ for ARM-based processors (e.g. M1/M2 Macs).
+If using an emulator, make sure to choose a system image with API Level 35. Use ABI _x86_64_ for Intel-based processors and _arm64-v8a_ for ARM-based processors (e.g. M1/M2 Macs).
 
 Android Studio has issues in parsing the C++ part of the project, please let us know if you know how to resolve it. As a workaround, for working C++ suggestions, you may use:
 
@@ -507,13 +507,13 @@ First configure `PATH` to prefer `cmake` from the Android SDK/NDK instead of the
 _Linux:_
 
 ```bash
-export PATH=$HOME/Android/Sdk/cmake/3.22.1/bin:$PATH
+export PATH=$HOME/Android/Sdk/cmake/3.30.3/bin:$PATH
 ```
 
 _macOS:_
 
 ```bash
-export PATH=$HOME/Library/Android/Sdk/cmake/3.22.1/bin:$PATH
+export PATH=$HOME/Library/Android/Sdk/cmake/3.30.3/bin:$PATH
 ```
 
 Check if you have a system-wide Java Runtime Environment (JRE) installed:
@@ -584,8 +584,8 @@ To add any of those options to in-studio builds list them in "Command-line Optio
 You can install
 [Android SDK](https://developer.android.com/sdk/index.html) and
 [NDK](https://developer.android.com/tools/sdk/ndk/index.html) without
-Android Studio. Please make sure that SDK for API Level 33,
-NDK version **27.1.12297006** and CMake version **3.22.1** are installed.
+Android Studio.
+Please make sure to install NDK, CMake and SDK versions as stated in the [Preparing](#preparing-1) section.
 
 If you are low on RAM, disk space or traffic there are ways to reduce system requirements:
 - exclude the `cpp` folder from indexing. If you do not make any work on the C++ code, this will greatly improve the start-up performance and the ram usage of Android Studio. Click on the `Project` tab on the left, find the `cpp` folder (should be next to the `java` folder), right click on it and select `Mark Directory as` -> `Excluded` (red folder icon). Then restart Android Studio.
