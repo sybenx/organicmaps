@@ -192,6 +192,7 @@ public:
       {"leisure", "marina"},
       {"leisure", "nature_reserve"},
       {"leisure", "park"},
+      {"leisure", "playground"},
     };
 
     Classificator const & c = classif();
@@ -223,7 +224,6 @@ public:
       {"amenity", "police"},
       {"amenity", "post_office"},
       {"amenity", "stripclub"},
-      {"amenity", "taxi"},
       {"amenity", "theatre"},
     };
 
@@ -496,7 +496,7 @@ PoiType GetPoiType(feature::TypesHolder const & th)
   {
     return PoiType::TransportMajor;
   }
-  if (IsPublicTransportStopChecker::Instance()(th))
+  if (IsPublicTransportStopChecker::Instance()(th) || IsTaxiChecker::Instance()(th))
     return PoiType::TransportLocal;
 
   static IsAttraction const attractionCheck;
